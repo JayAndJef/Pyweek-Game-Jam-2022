@@ -12,7 +12,9 @@ from constants import (
 import pygame
 
 pygame.init()
+
 # Window
+
 win = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 #pygame.display.set_icon("")
 pygame.display.set_caption("Theme: The Red Planet!")
