@@ -1,0 +1,3 @@
+FPS = 60 #for clock.tick()
+SCREEN_WIDTH = 1000
+SCREEN_HEIGHT = 720
