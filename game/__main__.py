@@ -19,10 +19,11 @@
 
 # Imports
 import sys
+from typing import NoReturn
 
 import pygame
 
-from constants import (
+from .constants import (
     SCREEN_WIDTH,
     SCREEN_HEIGHT,
     FPS,
@@ -38,7 +39,7 @@ pygame.display.set_caption('Theme: The Red Planet!')
 clock = pygame.time.Clock()
 
 # Main function
-def main():
+def main() -> NoReturn:
     while True:
         clock.tick(FPS)
     
