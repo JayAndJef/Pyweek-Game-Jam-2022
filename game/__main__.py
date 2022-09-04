@@ -1,17 +1,22 @@
 # Built-In - Module
 from sys import exit
 
+# Constants
+from constants import (
+    SCREEN_WIDTH,
+    SCREEN_HEIGHT,
+    FPS,
+)
+
 # Downloaded - Module
 import pygame
 
 pygame.init()
 # Window
-WIDTH, HEIGHT = 1080, 720
-win = pygame.display.set_mode((WIDTH, HEIGHT))
+win = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 #pygame.display.set_icon("")
 pygame.display.set_caption("Theme: The Red Planet!")
 
-FPS = 60
 clock = pygame.time.Clock()
 
 # Main Function
