@@ -24,5 +24,5 @@ from pathlib import Path
 FPS = 60
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
-IMAGE_BASE = Path(r'game\images')
+IMAGE_BASE = Path(r'game/images')
 BACKGROUND = (0, 0, 0)
