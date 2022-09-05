@@ -28,7 +28,7 @@ import pygame
 
 
 # Main fuction
-def main():
+def main() -> NoReturn:
     # Initialize Pygame
     pygame.init()
 
