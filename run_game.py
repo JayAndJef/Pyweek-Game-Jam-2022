@@ -1,6 +1,6 @@
 # -*- coding: utf_8 -*-
 
-# base_sprite.py - Base game sprite class.
+# run_game.py - Simple game launcher.
 # Copyright (C) 2022  T.M.J
 #
 # This program is free software: you can redistribute it and/or modify
@@ -18,20 +18,16 @@
 
 
 # Imports
-import pygame
+import sys
 
 
-# Base sprite class
-class BaseSprite(pygame.sprite.Sprite):
-    def __init__(self, image, x, y) -> None:
-        super().__init__()
-        
-        self.image = pygame.image.load(image)
-        self.rect = self.image.get_rect()
-        self.rect.center = [x, y]
-        
-    def update(self):
-        pass
-    
-    def draw(self, screen):
-        screen.blit(self.image, self.rect)
+# Required Python version
+MIN_VER = (3, 10)
+
+if sys.version_info[:2] < MIN_VER:
+    sys.exit('This game requires Python {}.{}.'.format(*MIN_VER))
+
+# Start the game
+from game.__main__ import main
+
+main()
