@@ -17,41 +17,57 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-# Imports
-import sys
-from typing import NoReturn
+# Built-In - Module
+from sys import exit
 
-import pygame
-
+# Constants
 from .constants import (
     SCREEN_WIDTH,
     SCREEN_HEIGHT,
     FPS,
+    BACKGROUND
 )
 
-# Initialize Pygame
-pygame.init()
+from .player import Player
 
-window = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-# pygame.display.set_icon('')
-pygame.display.set_caption('Theme: The Red Planet!')
+# Downloaded - Module
+import pygame
 
-clock = pygame.time.Clock()
+# Main Function
+def main():
+    pygame.init()
 
-# Main function
-def main() -> NoReturn:
-    while True:
-        clock.tick(FPS)
+    # Window
+
+    win = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    #pygame.display.set_icon("")
+    pygame.display.set_caption("Theme: The Red Planet!")
+
+    clock = pygame.time.Clock()
     
-        # End the program when the window is closed
+    player = Player(500, 360)
+
+    run = True
+    while run:
+        pygame.event.pump()
+        
+        win.fill(BACKGROUND)
+        player.update(pygame.sprite.Group())
+        player.draw(win)
+        pygame.display.flip()
+        # Ends Program when the X button is clicked
         for event in pygame.event.get():
-            match event.type:
-                case pygame.QUIT:
-                    sys.exit()
+            if event.type == pygame.QUIT:
+                run = False
+                break
     
-        # Update the window
-        pygame.display.update()
+        clock.tick(FPS)
+        # Updates Window
+        
 
+    # Closes Program
+    pygame.quit()
+    exit()
 
 if __name__ == '__main__':
     main()

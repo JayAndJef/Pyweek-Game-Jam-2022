@@ -16,7 +16,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-
-FPS = 60
-SCREEN_WIDTH = 1920
-SCREEN_HEIGHT = 1080
+FPS = 60 #for clock.tick()
+SCREEN_WIDTH = 1500
+SCREEN_HEIGHT = 1500
+IMAGE_BASE = "images/"
+BACKGROUND = (0, 0, 0)
