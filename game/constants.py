@@ -16,8 +16,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-FPS = 60 #for clock.tick()
-SCREEN_WIDTH = 1500
-SCREEN_HEIGHT = 1500
-IMAGE_BASE = "images/"
+
+# Imports
+from pathlib import Path
+
+
+FPS = 60
+SCREEN_WIDTH = 1280
+SCREEN_HEIGHT = 720
+IMAGE_BASE = Path(r'game\images')
 BACKGROUND = (0, 0, 0)

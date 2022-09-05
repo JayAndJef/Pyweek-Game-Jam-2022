@@ -25,13 +25,13 @@ import pygame
 class BaseSprite(pygame.sprite.Sprite):
     def __init__(self, image, x, y) -> None:
         super().__init__()
-        
+
         self.image = pygame.image.load(image)
         self.rect = self.image.get_rect()
         self.rect.center = [x, y]
-        
-    def update(self):
+
+    def update(self) -> None:
         pass
-    
-    def draw(self, screen):
+
+    def draw(self, screen) -> None:
         screen.blit(self.image, self.rect)
