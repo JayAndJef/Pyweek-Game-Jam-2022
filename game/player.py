@@ -47,9 +47,8 @@ class Player(BaseSprite):
                 self.h_spd -= self.boost_speed_left
             if key[pygame.K_RIGHT]:
                 self.h_spd += self.boost_speed_right
-            if key[pygame.K_UP]:
-                self.v_spd += self.boost_speed_up
 
+            self.v_spd += self.boost_speed_up
             self.counter = 0
 
         if self.h_spd < 0:
