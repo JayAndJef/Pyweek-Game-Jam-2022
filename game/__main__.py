@@ -22,6 +22,7 @@ import sys
 from typing import NoReturn
 
 from .constants import SCREEN_WIDTH, SCREEN_HEIGHT, FPS, BACKGROUND
+from .boost_orb import BoostOrb
 from .player import Player
 from .platform import Platform
 
