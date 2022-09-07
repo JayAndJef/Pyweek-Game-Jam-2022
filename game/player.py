@@ -33,21 +33,21 @@ class Player(BaseSprite):
         self.h_spd = 0
         self.boost_speed_left = 8
         self.boost_speed_right = 8
-        self.boost_speed_up = 40  # FIXME (gravity)
-        self.gravity = 1  # TODO
-        self.press_delay = 20
-        self.counter = 20
+        self.boost_speed_up = 30  # FIXME (gravity)
+        self.gravity = 0.7  # TODO
+        self.press_delay = 5
+        self.counter = 5
 
     def update(self, platforms: pygame.sprite.Group) -> None:
         key = pygame.key.get_pressed()
-        grounded = pygame.sprite.spritecollideany(self, platforms)
+        grounded = self.check_collide(0, 6, platforms)
 
         if self.counter == self.press_delay and self.v_spd < 10:
             if key[pygame.K_LEFT]:
                 self.h_spd -= self.boost_speed_left
+                self.v_spd += self.boost_speed_up
             if key[pygame.K_RIGHT]:
                 self.h_spd += self.boost_speed_right
-            if key[pygame.K_UP]:
                 self.v_spd += self.boost_speed_up
 
             self.counter = 0
@@ -57,16 +57,22 @@ class Player(BaseSprite):
         elif self.h_spd > 0:
             self.h_spd -= 0.2
 
-        if not grounded and self.v_spd > -20:
+        if not grounded and self.v_spd > -10:
             self.v_spd -= self.gravity
 
-        if grounded:
+        if grounded and self.v_spd < 0:
             self.v_spd = 0
 
         self.move(self.h_spd, -self.v_spd)
 
         if self.counter < self.press_delay:
             self.counter += 1
+            
+    def check_collide(self, x, y, platforms):
+        self.move(x, y)
+        collide = pygame.sprite.spritecollideany(self, platforms)
+        self.move(-x, -y)
+        return collide
 
     def move(self, x, y) -> None:
         self.rect.move_ip(x, y)

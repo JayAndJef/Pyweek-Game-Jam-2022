@@ -1,6 +1,6 @@
 # -*- coding: utf_8 -*-
 
-# constants.py - Contains constants needed throughout the game.
+# player.py - General player code.
 # Copyright (C) 2022  T.M.J
 #
 # This program is free software: you can redistribute it and/or modify
@@ -16,13 +16,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+from .sprite import BaseSprite
+from .constants import IMAGE_BASE
 
-# Imports
-from pathlib import Path
-
-
-FPS = 60
-SCREEN_WIDTH = 1280
-SCREEN_HEIGHT = 720
-IMAGE_BASE = Path(r'game/images')
-BACKGROUND = (0, 0, 0)
+class Platform(BaseSprite):
+    def __init__(self, x, y) -> None:
+        super().__init__(IMAGE_BASE / "platform.png", x, y)
+        

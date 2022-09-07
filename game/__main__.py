@@ -23,6 +23,7 @@ from typing import NoReturn
 
 from .constants import SCREEN_WIDTH, SCREEN_HEIGHT, FPS, BACKGROUND
 from .player import Player
+from .platform import Platform
 
 import pygame
 
@@ -39,13 +40,17 @@ def main() -> NoReturn:
 
     clock = pygame.time.Clock()
     player = Player(500, 360)
+    platforms = pygame.sprite.Group()
+    for c in range(0, SCREEN_WIDTH, 24):
+        platforms.add(Platform(c, SCREEN_HEIGHT-12))
 
     while True:
         # Update important game elements
         pygame.event.pump()
         win.fill(BACKGROUND)
-        player.update(pygame.sprite.Group())
+        player.update(platforms)
         player.draw(win)
+        platforms.draw(win)
         pygame.display.flip()
 
         # Kill the program when the window is closed
